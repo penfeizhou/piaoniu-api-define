@@ -59,9 +59,26 @@ HOST: http://ipiaoniu.apiary.io
             }
 
 
-## 活动详情 [/v1/activities/{id}]
+## 活动描述 [/v1/activities/{id}]
+### 查询活动详情 [GET /v1/activities/{id}/detail]
 
-### 查询活动详情 [GET]
++ Parameters
+    + id - 活动Id
+    
++ Response 200 (application/json)
+
+        {
+            "id": 3,
+            "addTime": 1439855876000,
+            "updateTime": 1439855876000,
+            "activityId": 1,
+            "type": 2,
+            "detailDesc": "<strong>详情</strong>"
+        }
+
+    
+
+### 查询活动描述 [GET]
 
 
 
