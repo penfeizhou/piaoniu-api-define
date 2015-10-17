@@ -87,19 +87,35 @@ HOST: http://ipiaoniu.apiary.io
           "rank": 10,
           "name": "abosdfe",
           "id": 1,
+          ""
           "activityDetails": [{
             "id": 1,
             "addTime": 1439855876000,
             "updateTime": 1439855876000,
             "activityId": 1,
+            "type": 1,
+            "detailDesc": "亮点1\n亮点2\n亮点3"
+          },{
+            "id": 2,
+            "addTime": 1439855876000,
+            "updateTime": 1439855876000,
+            "activityId": 1,
             "type": 2,
-            "detailDesc": {
-              "title": "",
-              "list": [
-                "123",
-                "456"
-              ]
-            }
+            "detailDesc": "简介"
+          },{
+            "id": 3,
+            "addTime": 1439855876000,
+            "updateTime": 1439855876000,
+            "activityId": 1,
+            "type": 3,
+            "detailDesc": "<strong>详情</strong>"
+          }],
+          "ticketCategories": [{
+            "id": 1,
+            "originPrice": 200
+            },{
+                "id": 2,
+                "originPrice": 100
           }],
           "poster": "http://www.gravatar.com/avatar/72ec343bf968d8fea338b9f57b4caab9?s=24&d=identicon",
           "areaImage": "<座位图>",
@@ -110,7 +126,9 @@ HOST: http://ipiaoniu.apiary.io
             "updateTime": 1439856046000,
             "activityEventGroupId": 1,
             "start": 1443628800000,
-            "end": 1443632400000
+            "end": 1443632400000,
+            "ticketsNum": 10,
+            "ticketsFlag": 1  //0-NONE,1-LESS,2-NORMAL,3-ENOUGH
           }],
           "updateTime": 1439853517000
         }
@@ -146,7 +164,7 @@ HOST: http://ipiaoniu.apiary.io
             "activitiesNum": 1,
             "id": 1,
             "longitude": 11,
-            "tags": ["hasTicket"],
+            "tags": ["ac"],
             "updateTime": 1441590509000
           }, {
             "address": "场馆地址:上海市黄浦区延安东路523号[查看地图]",
@@ -217,7 +235,38 @@ HOST: http://ipiaoniu.apiary.io
 
 ## 订单 [/v1/order]
 
-### 提交订单 [POST /v1/order?eventId,ticketGroupId,receiverName,receiverType,receiverMobile,receiverAddressId,count,paymentType,areaId,receiveType,totalAmount,paymentAmount]
+### 获取优惠 [GET /v1/order/coupons?eventId,ticketGroupId,count,areaId]
+
++ Parameter
+
+    + eventId
+    + ticketGroupId
+    + areaId
+    + count - 张数
+
++ Response 200 (application/json)
+
+        [
+        {
+            id: 25,
+            updateTime: 1444872944000,
+            addTime: 1444872944000,
+            userId: 13,
+            discountAmount: 200,
+            requireAmount: 0,
+            type: 1,
+            title: "开心麻花200元优惠券",
+            desc: "每张票立减10元",
+            activityId: 1,
+            activityEventGroupId: 2,
+            extraCondition: null,
+            effectiveTimeFrom: 1444872978000,
+            effectiveTimeTo: 1444872978000,
+            status: 1
+        }
+        ]
+
+### 提交订单 [POST /v1/order?eventId,ticketGroupId,receiverName,receiverType,receiverMobile,receiverAddressId,count,paymentType,areaId,receiveType,totalAmount,paymentAmount,couponId]
 
 + Parameter
 
@@ -232,6 +281,7 @@ HOST: http://ipiaoniu.apiary.io
     + receiverAddressId(number, optional) - 收件人地址
     + count - 张数
     + paymentType - 支付渠道 1:支付宝
+    + couponId - 优惠券ID
 
 + Response 200 (application/json)
 
@@ -257,7 +307,21 @@ HOST: http://ipiaoniu.apiary.io
 
 ## 票源 [/v1/tickets]
 
-### 获取票源信息 [GET /v1/tickets/?eventId,ticketCategoryId,pageIndex,pageSize]
+### 获取可选票面价 [GET /v1/ticketCategories/?eventId]
+
++ Parameters
+
+    + eventId(number) - 场次
+
++ Response 200 (application/json)
+
+        [{
+            "id": 4,
+            "originPrice": 100,
+            "hasTicket": true
+        }]
+
+### 获取票源信息 [GET /v1/tickets?eventId,ticketCategoryId,pageIndex,pageSize]
 
 用户端
 说明：用于在选择票的界面根据票挡获取票源信息
@@ -315,7 +379,7 @@ HOST: http://ipiaoniu.apiary.io
             }]
         }]
 
-### 查询在售信息 [GET /v1/salerTickets/?ticketCategoryId,eventId]
+### 查询在售信息 [GET /v1/salerTickets?ticketCategoryId,eventId]
 
 + Parameters
     + eventId
@@ -423,6 +487,29 @@ delta为加减数量，前端填写的时候填的是票库存，发请求的时
                 "areaId": 12,
                 "ticketCategoryId": 12,
                 "delta": 5
+            }
+
++ Response 200 (application/json)
+
+            {
+                "success": true
+            }
+
+### 更改票档票源所有信息 [PUT /v1/salerTickets]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "eventId": 12,
+                "ticketCategoryId": 12,
+                "salePrice": null/2000,
+                "desc": null/"更改后的描述",
+                "tickets": [{
+                    "areaId":1,
+                    "delta": -5
+                }]
             }
 
 + Response 200 (application/json)
@@ -546,7 +633,100 @@ delta为加减数量，前端填写的时候填的是票库存，发请求的时
                     "mobileNo": "13800138030",
                     "userName": "南玻玩",
                     "status": 0,
+                    "avatar": "",
                     "addTime": 14419656000000,
                     "updateTime": 1441965600000
                 }
             }
+
+
+## 个人中心 [/v1/user]
+
+### 获取个人信息 [GET]
+
++ Response 200 (application/json)
+
+            {
+                "user": {
+                    "userId": 1,
+                    "mobileNo": "13800138030",
+                    "userName": "南玻玩",
+                    "status": 0,
+                    "addTime": 14419656000000,
+                    "avatar": "",
+                    "updateTime": 1441965600000
+                }
+            }
+
+### 修改头像url [PUT /v1/user/avatar]
+
++ Response 200 (application/json)
+
+            {
+                "success": true,
+                "avatar": "http://7xllta.com2.z0.glb.qiniucdn.com/test.jpg?attname="
+            }
+
+### 修改个人基本信息 [PUT /v1/user/baseInfo]
+
++ Request (application/json)
+
+    + Body
+
+            {
+               "userName": "nickname-modify"
+            }
+
+
++ Response 200 (application/json)
+
+            {
+                "success": true
+            }
+
+
+### 修改密码 [PUT /v1/user/password]
+
++ Request (application/json)
+
+    + Body
+
+            {
+               "oldPassword": "old" ,
+               "newPassword": "new"
+            }
+
+
++ Response 200 (application/json)
+
+            {
+                "success": true
+            }
+
+### 查看可用优惠券列表 [GET /v1/coupons]
+
+需要先登陆，根据用户ID获取所有我的可用优惠列表
+
+
+
++ Response 200 (appliaction/json)
+
+            [
+            {
+                id: 25,
+                updateTime: 1444872944000,
+                addTime: 1444872944000,
+                userId: 13,
+                discountAmount: 200,
+                requireAmount: 0,
+                type: 1,
+                title: "开心麻花200元优惠券",
+                desc: "每张票立减10元",
+                activityId: 1,
+                activityEventGroupId: 2,
+                extraCondition: null,
+                effectiveTimeFrom: 1444872978000,
+                effectiveTimeTo: 1444872978000,
+                status: 1
+            }
+            ]
