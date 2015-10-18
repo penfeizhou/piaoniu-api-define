@@ -3,9 +3,9 @@ HOST: http://ipiaoniu.apiary.io
 
 # 票牛Api
 
-## 活动列表 [/v1/activities{?pageIndex,pageSize,keyword,regionId,categoryId,latitude,longitude,startTime,endTime}]
+## 活动列表 [/v1/activities]
 
-### 获取活动列表 [GET]
+### 获取活动列表 [GET /v1/activities{?pageIndex,pageSize,keyword,regionId,categoryId,latitude,longitude,startTime,endTime}]
 
 + Parameters
     + pageIndex(number) - 第几页
@@ -60,27 +60,177 @@ HOST: http://ipiaoniu.apiary.io
 
 
 ## 活动描述 [/v1/activities/{id}]
-### 查询活动详情 [GET /v1/activities/{id}/detail]
+
+### 获取活动描述 [GET /v1/activities/{id}]
 
 + Parameters
     + id - 活动Id
-    
+
 + Response 200 (application/json)
 
         {
-            "id": 3,
-            "addTime": 1439855876000,
-            "updateTime": 1439855876000,
-            "activityId": 1,
-            "type": 2,
-            "detailDesc": "<strong>详情</strong>"
+            "venue": {
+                "id": 1,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "name": "人民大舞台",
+                "address": "地址：黄浦区九江路663号",
+                "avatar": "http://img6.gewara.com/cw250h200/images/theatre/s_1fee454f_12cee8d0bd8__7f61.jpg",
+                "cityId": 1,
+                "regionId": 0,
+                "latitude": 0.000000,
+                "longitude": 0.000000,
+                "phones": ""
+            },
+            "actorId": 0,
+            "addTime": 1444494239000,
+            "name": "念剧场-2015情感大戏《这辈子有过你》经典回归",
+            "ticketCategories": [{
+                "id": 1,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventId": 1,
+                "originPrice": 100.00,
+                "specification": "100元",
+                "desc": ""
+            }, {
+                "id": 2,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventId": 1,
+                "originPrice": 180.00,
+                "specification": "180元",
+                "desc": ""
+            }, {
+                "id": 3,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventId": 1,
+                "originPrice": 280.00,
+                "specification": "280元",
+                "desc": ""
+            }, {
+                "id": 4,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventId": 1,
+                "originPrice": 380.00,
+                "specification": "380元",
+                "desc": ""
+            }, {
+                "id": 5,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventId": 1,
+                "originPrice": 500.00,
+                "specification": "500元",
+                "desc": ""
+            }],
+            "updateTime": 1444494239000,
+            "id": 1,
+            "activityDetails": [{
+                "id": 1,
+                "updateTime": 1444896496000,
+                "addTime": 1444494239000,
+                "activityId": 1,
+                "type": 1,
+                "detailDesc": "<p>金曲唱作歌王JJ林俊杰，以出道第10年的音乐作品「因你而在」创下空前销售纪录，并勇夺2014年第25届金曲奖最佳男歌手奖实至名归，为纪念出道10年而筹备的「时线Time Line世界巡回演唱会」巡迴走遍25个城市。</p>\n<p>    而关于之前大家猜测这次究竟是aMEI还是阿密特（AMIT）的演唱会答案终于揭晓──这次巡演将会是偏执的aMEI与狂野的阿密特首度同台合体演出，歌迷不但可以看到aMEI以本尊身分演唱《偏执面》精彩曲目，也可以亲睹阿密特暌违4年的正式演唱会演出！</p>\n<p>    这次巡演将以前所未有、上下半场的方式疯阿密特的摇滚，跳aMEI的电音，中间当然也少不了经典的情歌大合唱！</p>"
+            }, {
+                "id": 2,
+                "updateTime": 1444896496000,
+                "addTime": 1444494239000,
+                "activityId": 1,
+                "type": 2,
+                "detailDesc": "<h3>演出详情</h3>\n\n<p><br />\n&nbsp;&nbsp;&nbsp;&nbsp;</p>\n\n<p>根据香港著名作家张小娴作品《我这辈子有过你》改编。（曾用名：《三个A CUP的女人》）</p>\n\n<p>&nbsp;</p>\n\n<p>由著名导演何念二度创作。将这部张小娴最深爱的作品搬上舞台，融合崭新的表演形式，共同探讨都市情感话题。</p>\n\n<p>&nbsp;</p>\n\n<p><img alt=\"\" src=\"http://img5.gewara.com/userfiles/image/201509/s56a44f13_15012de0017__7ff4.png\" style=\"height:344px; width:560px\" /></p>\n\n<p>&nbsp;</p>\n\n<p>本剧首演于2014年11月，共计38场，场场爆满，更是获得史上零差评、最受欢迎的舞台剧，如今经典回归，12月2日上海人民大舞台再次温情献演！<br />\n<br />\n本剧讲述了三个性格迥异的女人始终在爱情里颠沛流离，义无反顾地寻觅世间的真爱。<br />\n她们互相鼓励、互相取暖，学习 &ldquo;爱情&rdquo;这门人生的必修课。</p>\n\n<p>&nbsp;</p>\n\n<p><img alt=\"\" src=\"http://img5.gewara.com/userfiles/image/201509/s56a44f13_15012de0017__7ff2.png\" style=\"height:387px; width:560px\" /></p>\n\n<p>&nbsp;</p>\n\n<p>爱情到底是什么？</p>\n\n<p>如果爱是场赌博，胜算会是几许？</p>\n\n<p>一输再输后，女人为爱付出的底线在哪里？</p>\n\n<p><br />\n三个女人和他们的爱情，缘起而回眸，缘尽而转身，再也寻不见了&hellip;&hellip;<br />\n&nbsp;</p>\n\n<p><img alt=\"\" src=\"http://img5.gewara.com/userfiles/image/201509/s_3357a3a7_15012e067c0__7ff2.png\" style=\"height:311px; width:560px\" /></p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p><strong>原著作者--张小娴</strong><br />\n香港著名言情小说家，95年推出第一部长篇小说《面包树上的女人》而走红文坛，是继亦舒之后，香港最受欢迎的言情小说家。她以小说描绘爱情的灼热与冷却，以散文倾诉恋人的微笑与泪水，迄今已出版四十多本小说和散文集，深受广大读者好评。</p>\n\n<p>&nbsp;</p>\n\n<p><strong>导演--何念</strong></p>\n\n<p>知名导演，【念剧场】品牌创始人。曾监制、导演的舞台剧代表作有：《面包树上的女人》、《失恋33天》、《女人一定要有钱吗》、《武林外传》、《撒娇女王》、《21克拉》、《鹿鼎记》、《致青春》等。</p>\n\n<p>&nbsp;</p>\n\n<p>独有的念式作品风格，多以轻松又不乏深度、幽默而不落于俗套为主要创作基调，以新颖独特的视角，融合音乐剧、肢体剧等多种表现形式、配合炫目华丽的舞台灯光效果。给观众朋友带来视听感官全方位的艺术享受。</p>\n\n<p>&nbsp;</p>\n\n<p>与湖南卫视合作的电视节目有：《七夕之夜》、《女王驾到》、《星剧社》等。《七夕之夜》节目开拓了国内舞台剧搬上电视荧幕的先河，并创下了收视佳绩。而《女王驾到》系列周播剧，更是开创了传统电视剧转型的新篇章。今年与克顿传媒合作的青春爆笑喜剧《淑女涩男》更是获得全国收视第二的不菲成绩。</p>\n\n<p>&nbsp;</p>\n\n<p><strong>编剧--刘美钰</strong></p>\n\n<p>台湾剧场界知名演员、编剧、戏剧讲师。参与过的演出有念剧场作品《撒娇女王》，表演工作坊《如梦之梦》、《宝岛一村》、《这是真的》、《快乐不用学》、《如影随行》、《暗恋桃花源》等。<br />\n&nbsp;</p>\n\n<p>剧本作品《红色凡妮莎》荣获2005年台湾文学奖剧本类首奖，《在看见以前》受邀参加第四届北京南锣鼓巷戏剧节，并为2013年台北新成政三校戏剧社联合公演、2010年南京大学戏剧影视艺术系春季公演剧本，另有《夏娃的水平升降》、《Nice to Meet You》、《约会A Date》之等剧作。<br />\n&nbsp;</p>\n\n<p><img alt=\"\" src=\"http://img5.gewara.com/userfiles/image/201509/s384db8bf_15012db2e0a__7ff0.png\" style=\"height:613px; width:400px\" /></p>\n\n<p>&nbsp;</p>\n\n<p><img alt=\"\" src=\"http://img5.gewara.com/userfiles/image/201509/s_3357a3a7_15012e067c0__7ff1.png\" style=\"height:349px; width:560px\" /></p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p><strong>明星都爱&ldquo;这辈子&rdquo;</strong></p>\n\n<p>在第一轮首演中，胡彦斌、娄艺潇、黄豆豆、何炅等多位明星作为嘉宾观众曾捧场观看。他们在观看了话剧后，不仅对演员们细腻而富有爆发力的表演赞不绝口，更是感叹这部话剧与他们爱情观的契合度之高，甚至可能影响到他们对爱情的选择。</p>\n\n<p>&nbsp;</p>\n\n<p>《这辈子有过你》被誉为&ldquo;爱情圣经&rdquo;，因为不同的人都会在这里看到属于自己的故事，如果想要窥探明星的爱情观，或者想在这里找到自己爱情的出口，《这辈子有过你》都会成为不错的选择。据说，这一轮复演，原作者&ldquo;爱情导师&rdquo;张小娴还有可能会亲自坐镇现场，究竟她会不会现身？一切都看观众和粉丝们的热情啦。<br />\n&nbsp;</p>\n\n<p>&nbsp;</p>\n"
+            }, {
+                "id": 1327,
+                "updateTime": 1444896496000,
+                "addTime": 1444896496000,
+                "activityId": 1,
+                "type": 3,
+                "detailDesc": "从未呈现的舞美、灯光、音响，挑战全新视听感受\n制作规模再破以往记录，重新定义“华丽炫目”\n冠军单曲全新演绎，声动全城\n网罗世界顶级舞者助阵巡演\n19年乐坛历练、沉淀，歌唱、表演登峰造极"
+            }],
+            "poster": "http://img6.gewara.com/cw270h360/images/drama/201509/s3a6b061f_14fa89dd3c8__7f28.jpg",
+            "categoryId": 0,
+            "events": [{
+                "id": 1,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventGroupId": 1,
+                "start": 1449054900000,
+                "end": 1449058500000,
+                "ticketsNumber": 3,
+                "ticketsFlag": 1
+            }, {
+                "id": 2,
+                "updateTime": 1444494239000,
+                "addTime": 1444494239000,
+                "activityEventGroupId": 1,
+                "start": 1449141300000,
+                "end": 1449144900000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }, {
+                "id": 3,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449227700000,
+                "end": 1449231300000,
+                "ticketsNumber": 10,
+                "ticketsFlag": 2
+            }, {
+                "id": 4,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449314100000,
+                "end": 1449317700000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }, {
+                "id": 5,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449659700000,
+                "end": 1449663300000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }, {
+                "id": 6,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449746100000,
+                "end": 1449749700000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }, {
+                "id": 7,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449832500000,
+                "end": 1449836100000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }, {
+                "id": 8,
+                "updateTime": 1444494240000,
+                "addTime": 1444494240000,
+                "activityEventGroupId": 1,
+                "start": 1449918900000,
+                "end": 1449922500000,
+                "ticketsNumber": 0,
+                "ticketsFlag": 0
+            }]
         }
 
-    
 
-### 查询活动描述 [GET]
+## 查询活动详情 [/v1/activities/{id}/detail]
 
-
+### 获取活动详情 [GET]
 
 + Parameters
     + id - 活动Id
@@ -88,68 +238,12 @@ HOST: http://ipiaoniu.apiary.io
 + Response 200 (application/json)
 
         {
-          "addTime": 1439853517000,
-          "venue": {
-            "id": 1,
-            "addTime": 1441590509000,
-            "updateTime": 1441590509000,
-            "name": "test",
-            "address": "test",
-            "avatar": "http://www.gravatar.com/avatar/72ec343bf968d8fea338b9f57b4caab9?s=24&d=identicon",
-            "cityId": 1,
-            "regionId": 1,
-            "latitude": 11,
-            "longitude": 11,
-            "phones": "123,123"
-          },
-          "actorId": 0,
-          "rank": 10,
-          "name": "abosdfe",
-          "id": 1,
-          ""
-          "activityDetails": [{
-            "id": 1,
-            "addTime": 1439855876000,
-            "updateTime": 1439855876000,
-            "activityId": 1,
-            "type": 3,
-            "detailDesc": "亮点1\n亮点2\n亮点3"
-          },{
-            "id": 2,
-            "addTime": 1439855876000,
-            "updateTime": 1439855876000,
-            "activityId": 1,
-            "type": 1,
-            "detailDesc": "简介"
-          },{
             "id": 3,
             "addTime": 1439855876000,
             "updateTime": 1439855876000,
             "activityId": 1,
             "type": 2,
             "detailDesc": "<strong>详情</strong>"
-          }],
-          "ticketCategories": [{
-            "id": 1,
-            "originPrice": 200
-            },{
-                "id": 2,
-                "originPrice": 100
-          }],
-          "poster": "http://www.gravatar.com/avatar/72ec343bf968d8fea338b9f57b4caab9?s=24&d=identicon",
-          "areaImage": "<座位图>",
-          "categoryId": 1,
-          "events": [{
-            "id": 1,
-            "addTime": 1439856046000,
-            "updateTime": 1439856046000,
-            "activityEventGroupId": 1,
-            "start": 1443628800000,
-            "end": 1443632400000,
-            "ticketsNum": 10,
-            "ticketsFlag": 1  //0-NONE,1-LESS,2-NORMAL,3-ENOUGH
-          }],
-          "updateTime": 1439853517000
         }
 
 ## 场馆列表 [/v1/venues{?pageIndex,pageSize,keyword,regionId,categoryId,latitude,longitude}]
